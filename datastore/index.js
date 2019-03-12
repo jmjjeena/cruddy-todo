@@ -26,34 +26,16 @@ exports.create = (text, callback) => {
 };
 
 exports.readAll = (callback) => {
-
-  
-  // _.map()
-  var fileName = path.join(exports.dataDir, `${id}.txt`);
-  fs.readFile(fileName, (err,))
-
-
-
-
-
-  var data = _.map(items, (text, id) => {
-
-    return { id, text };
-  });
-  console.log(data);
-  callback(null, data);
-
-
-  // const readCounter = (callback) => {
-  //   fs.readFile(exports.counterFile, (err, fileData) => {
-  //     if (err) {
-  //       callback(null, 0);
-  //     } else {
-  //       callback(null, Number(fileData));
-  //     }
-  //   });
-  // };
-  
+  fs.readdir(exports.dataDir, (err, items) => {
+    if (err) {
+      throw ('error readdir\'in the files in the directory');
+    } else {
+      var data = _.map(items, (item) => {
+          return {id: item.slice(0, -4), text: item.slice(0, -4)};
+        })
+      callback(null, data);
+    }} 
+  );
 };
 
 exports.readOne = (id, callback) => {
