@@ -38,7 +38,7 @@ const writeCounter = (count, callback) => {
 
 // Public API - Fix this function //////////////////////////////////////////////
 
-exports.getNextUniqueId = (callback) => {
+exports.getNextUniqueId = (callback ) => {
   readCounter((err, currentCounter) => {
     if(err){
       callback(null, 0);
@@ -54,6 +54,7 @@ exports.getNextUniqueId = (callback) => {
     };
   })
 };
+
 // Configuration -- DO NOT MODIFY //////////////////////////////////////////////
 
 exports.counterFile = path.join(__dirname, 'counter.txt');
